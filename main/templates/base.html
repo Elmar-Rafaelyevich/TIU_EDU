@@ -1,0 +1,226 @@
+{% load widget_tweaks %}
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>Хранилище презентаций</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Хедер --- */
+        header {
+            background: #fff;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px 30px;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 a {
+            font-size: 24px;
+            color: #007BFF;
+            /* Синий цвет */
+            font-weight: bold;
+        }
+
+        header .auth-btn {
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            border: none;
+        }
+
+        .login-btn {
+            background: #007BFF;
+            /* Синий цвет */
+            color: white;
+        }
+
+        .login-btn:hover {
+            background: #0056b3;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
+        }
+
+        header span {
+            margin-right: 10px;
+            font-weight: 500;
+        }
+
+        /* --- Основной контент --- */
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* --- Сообщения --- */
+        .message {
+            padding: 12px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background: #e2e6ea;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Таблицы --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background: #007BFF;
+            /* Синий заголовок таблицы */
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) td {
+            background: #f9f9f9;
+        }
+
+        a.action-btn {
+            margin-right: 5px;
+            color: #007BFF;
+        }
+
+        button.delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 4px 8px;
+        }
+
+        button.delete-btn:hover {
+            background: #c82333;
+        }
+
+        /* --- Формы --- */
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #007BFF;
+            /* Синий заголовок формы */
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background: #007BFF;
+            /* Синие кнопки */
+            color: white;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .form-container button:hover {
+            background: #0056b3;
+        }
+
+        /* --- Загрузка файлов --- */
+        form.upload-form input[type="file"] {
+            margin-top: 10px;
+        }
+
+        form.upload-form button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1><a href="{% url 'dashboard' %}">Презентации</a></h1>
+            <div>
+                {% if user.is_authenticated %}
+                <span>Привет, {{ user.username }}</span>
+                <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="auth-btn logout-btn">Выйти</button>
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}" class="auth-btn login-btn">Войти</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% if messages %}
+        <div>
+            {% for m in messages %}
+            <div class="message">{{ m }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<div
+    style="max-width:500px; margin:50px auto; padding:40px; background:white; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.1);">
+    <h2 style="text-align:center; margin-bottom:30px; color:#333; font-family:Arial, sans-serif;">
+        {% if edit %}Редактировать{% else %}Создать{% endif %} группу
+    </h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <div style="margin-bottom:20px; position:relative;">
+            <label for="{{ field.id_for_label }}"
+                style="display:block; margin-bottom:6px; font-weight:600; color:#555; font-size:14px;">
+                {{ field.label }}
+            </label>
+            {{ field|add_class:"input-field" }}
+            {% if field.errors %}
+            <div style="color:red; font-size:0.85em; margin-top:4px;">
+                {{ field.errors }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <button type="submit"
+            style="width:100%; padding:14px; background:#007BFF; color:white; border:none; border-radius:8px; font-size:16px; font-weight:bold; cursor:pointer; transition:0.3s;">
+            Сохранить
+        </button>
+    </form>
+</div>
+
+<!-- Встроенные стили для полей формы -->
+<style>
+    .input-field {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        transition: 0.3s;
+        font-size: 14px;
+    }
+
+    .input-field:focus {
+        border-color: #007BFF;
+        box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+        outline: none;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+</style>
+{% endblock %}

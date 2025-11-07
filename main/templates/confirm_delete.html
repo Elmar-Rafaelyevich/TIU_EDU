@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<h2>Подтвердите удаление {{ type }}</h2>
+<p>Вы уверены, что хотите удалить "{{ object }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" style="padding:8px 12px; background:red; color:white; border:none; border-radius:4px;">Да, удалить</button>
+  <a href="{% url 'dashboard' %}" style="padding:8px 12px; background:#ccc; color:black; border-radius:4px; text-decoration:none;">Отмена</a>
+</form>
+{% endblock %}
