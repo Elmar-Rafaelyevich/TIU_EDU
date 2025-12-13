@@ -1,33 +1,33 @@
 📚 Teacher Slides Hub
 
-Teacher Slides Hub — это веб-платформа для преподавателей, позволяющая хранить, загружать, редактировать и удалять учебные презентации в одном безопасном месте.
+Teacher Slides Hub is a web platform for teachers that allows them to store, upload, edit, and delete educational presentations in one secure place.
 
-Проект создан с упором на порядок, удобство и контроль над материалами. Никакого хаоса из флешек, мессенджеров и «финал_версия_2.pptx».
+The project was created with an emphasis on organization, convenience, and control over materials. No more chaos from flash drives, instant messaging apps, and "final_version_2.pptx."
 
-🚀 Возможности
+🚀 Features
 
-📤 Загрузка презентаций (PDF, PPTX, PPT)
+📤 Upload presentations (PDF, PPTX, PPT)
 
-💾 Надёжное хранение файлов
+💾 Secure file storage
 
-✏️ Обновление и замена презентаций
+✏️ Update and replace presentations
 
-🗑 Удаление устаревших материалов
+🗑 Delete outdated materials
 
-📁 Организация по предметам / темам
+📁 Organize by subject/topic
 
-🔍 Быстрый поиск по названию
+🔍 Quick search by title
 
-🔐 Доступ только для авторизованных пользователей (учителей)
+🔐 Access only for authorized users (teachers)
 
-🧑‍🏫 Для кого
+🧑‍🏫 For whom
 
-Школьные учителя
+School teachers
 
-Преподаватели колледжей и вузов
+College and university professors
 
-Онлайн-курсы и учебные центры
+Online courses and training centers
 
-Частные репетиторы
+Private tutors
 
-Если ты ведёшь занятия — этот сервис экономит нервы и время.
+If you teach classes, this service will save you time and effort.
